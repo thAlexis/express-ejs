@@ -5,24 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Personne</title>
   </head>
+
   <body>
-    <h1>Personne</h1>
+    <h1>Gestion de personnes</h1>
     <h2>Ajouter une nouvelle personne</h2>
-    <form method="post">
-      <label for="lastname">nom</label>
-      <input type="text" name="nom" />
-      <label for="firstname">prénom</label>
-      <input type="text" name="prenom" />
-      <label for="age">âge</label>
-      <input type="text" name="age" />
-      <button>Ajouter</button>
+    <ul>
+      <% if (erreurs) { %> <% erreurs.forEach(err => { %>
+      <li><%= err %></li>
+
+      <% }) %> <% } %>
+    </ul>
+    <form action="/personne" method="post">
+      <div>
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" name="nom" />
+      </div>
+      <div>
+        <label for="prenom">Prénom</label>
+        <input type="text" id="prenom" name="prenom" />
+      </div>
+      <div>
+        <label for="age">Âge</label>
+        <input type="number" id="age" name="age" />
+      </div>
+      <div>
+        <button>Envoyer</button>
+      </div>
     </form>
     <h2>Liste des personnes</h2>
     <ul>
-      <% personnes.forEach(p => { %>
+      <% personnes.forEach(p => { %> <% let link=`/personne/${p.id}` %>
       <li>
-        <%= `${p.prenom} ${p.nom} ${p.id}` %>
-        <a href="/personne/<%- p.id%>">Supprimer</a>
+        <%= `${p.prenom} ${p.nom}` %>
+        <a href="<%= link %>">supprimer</a>
       </li>
       <%})%>
     </ul>
