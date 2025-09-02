@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personne</title>
+  </head>
+  <body>
+    <h1>Personne</h1>
+    <h2>Ajouter une nouvelle personne</h2>
+    <form method="post">
+      <label for="lastname">nom</label>
+      <input type="text" name="nom" />
+      <label for="firstname">prénom</label>
+      <input type="text" name="prenom" />
+      <label for="age">âge</label>
+      <input type="text" name="age" />
+      <button>Ajouter</button>
+    </form>
+    <h2>Liste des personnes</h2>
+    <ul>
+      <% personnes.forEach(p => { %>
+      <li>
+        <%= `${p.prenom} ${p.nom} ${p.id}` %>
+        <a href="/personne/<%- p.id%>">Supprimer</a>
+      </li>
+      <%})%>
+    </ul>
+  </body>
+</html>
