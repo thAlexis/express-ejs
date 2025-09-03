@@ -1,11 +1,11 @@
 import mysql from "mysql2/promise";
 
 const connection = await mysql.createConnection({
-  host: "127.0.0.1",
-  port: 3306,
-  user: "root",
-  password: "",
-  database: "express_mvc",
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.db_NAME,
 });
 
 // connection.connect((err) => {
